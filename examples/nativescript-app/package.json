@@ -1,0 +1,20 @@
+{
+  "name": "nativescript-app",
+  "main": "app/app.ts",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "STORYBOOK_NATIVE_LOCAL_EMULATOR=true yarn start-storybook -p 53743",
+    "build:storybook": "yarn build-storybook"
+  },
+  "dependencies": {
+    "@nativescript/core": "~8.1.1",
+    "@nativescript/theme": "~3.0.1"
+  },
+  "devDependencies": {
+    "@nativescript/ios": "8.1.0",
+    "@nativescript/types": "~8.1.1",
+    "@nativescript/webpack": "~5.0.0",
+    "typescript": "~4.3.5"
+  }
+}

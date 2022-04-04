@@ -10,7 +10,7 @@
     "Adil Malik <adil_malik@intuit.com>"
   ],
   "scripts": {
-    "start": "yarn start-storybook -p 53743",
+    "start": "STORYBOOK_NATIVE_LOCAL_EMULATOR=true yarn start-storybook -p 53743",
     "build:storybook": "yarn build-storybook"
   },
   "keywords": [],
