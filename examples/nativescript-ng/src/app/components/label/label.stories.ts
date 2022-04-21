@@ -3,7 +3,7 @@
 import { Meta, Story } from '@storybook/angular';
 import { addons } from "@storybook/addons";
 
-import { ButtonComponent } from './button.component';
+import { LabelComponent } from './label.component';
 // import { DeepLinkRenderer } from "@storybook/native-components";
 import {
   ControllerManager,
@@ -14,6 +14,12 @@ import {
 } from "@storybook/native-controllers";
 import { useDevice } from "@storybook/native-devices";
 import { BehaviorSubject, combineLatest, debounceTime } from 'rxjs';
+import { listenToStoryChange } from '../../core/deep-link-generator';
+
+
+// TODO: move this to somehwere that makes sense
+// it has to be called once to generate deeplinks
+listenToStoryChange();
 
 // const queryParams$ = new BehaviorSubject<Record<string, any>>({});
 // const component$ = new BehaviorSubject<string>('');
@@ -29,7 +35,7 @@ import { BehaviorSubject, combineLatest, debounceTime } from 'rxjs';
 //   // const componentName = story.storyId;
 //   // TODO: find a way to get the component's selector from 
 //   // the component itself
-//   console.log('ButtonComponent', ButtonComponent);
+//   console.log('ButtonComponent', LabelComponent);
 //   const componentName = 'ns-button';
 //   component$.next(componentName);
 // })
@@ -109,8 +115,8 @@ import { BehaviorSubject, combineLatest, debounceTime } from 'rxjs';
 
 // More on default export: https://storybook.js.org/docs/angular/writing-stories/introduction#default-export
 export default {
-  title: 'Example/Button',
-  component: ButtonComponent,
+  title: 'Example/Label',
+  component: LabelComponent,
   // More on argTypes: https://storybook.js.org/docs/angular/api/argtypes
   // argTypes: {
   //   backgroundColor: { control: 'color' },
@@ -119,7 +125,7 @@ export default {
 
 
 // More on component templates: https://storybook.js.org/docs/angular/writing-stories/introduction#using-args
-const Template: Story<ButtonComponent> = (args: ButtonComponent) => ({
+const Template: Story<LabelComponent> = (args: LabelComponent) => ({
   props: args,
 });
 
@@ -127,23 +133,11 @@ export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/angular/writing-stories/args
 Primary.args = {
   // primary: true,
-  text: 'Primary',
-  backgroundColor: 'blue'
+  text: 'TEST TEXT',
+  color: 'blue'
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
   text: 'Secondary',
 };
-
-// export const Large = Template.bind({});
-// Large.args = {
-//   size: 'large',
-//   label: 'Button',
-// };
-
-// export const Small = Template.bind({});
-// Small.args = {
-//   size: 'small',
-//   label: 'Button',
-// };

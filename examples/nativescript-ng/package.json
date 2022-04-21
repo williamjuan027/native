@@ -6,7 +6,8 @@
   "scripts": {
     "storybook": "start-storybook -p 6006",
     "start": "STORYBOOK_NATIVE_LOCAL_EMULATOR=true yarn start-storybook -p 53743",
-    "build:storybook": "yarn build-storybook"
+    "build:storybook": "yarn build-storybook",
+    "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points"
   },
   "dependencies": {
     "@angular/animations": "~13.1.1",
@@ -18,8 +19,7 @@
     "@angular/platform-browser-dynamic": "~13.1.1",
     "@angular/router": "~13.1.1",
     "@nativescript/angular": "^13.0.0",
-    "@nativescript/core": "~8.1.1",
-    "@nativescript/theme": "~3.0.1",
+    "@nativescript/core": "~8.2.2",
     "rxjs": "~7.4.0",
     "zone.js": "~0.11.4"
   },
@@ -27,7 +27,9 @@
     "@angular-devkit/build-angular": "~13.1.1",
     "@angular/cli": "^13.2.5",
     "@angular/compiler-cli": "~13.1.1",
-    "@nativescript/types": "~8.1.1",
+    "@nativescript/types-android": "8.2.0",
+    "@nativescript/types-ios": "8.2.1",
+    "@nativescript/ios": "8.2.2",
     "@nativescript/webpack": "~5.0.0",
     "@ngtools/webpack": "~13.1.1",
     "@storybook/addon-controls": "^6.4.19",
@@ -38,7 +40,6 @@
     "@storybook/native-addon": "^2.2.2",
     "@storybook/native-components": "^2.2.2",
     "@storybook/native-dev-middleware": "^2.2.2",
-    "typescript": "~4.4.4",
-    "webpack": "5"
+    "typescript": "~4.4.4"
   }
 }
