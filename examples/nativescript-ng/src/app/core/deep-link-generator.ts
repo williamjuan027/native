@@ -64,27 +64,23 @@ function updateDeepLink(component: string, storyParams: Record<string,any>): voi
     platform,
     baseUrl: deepLinkBaseUrl
   });
-  // const args = storyParams?.args?.split(';').reduce((acc, curr) => {
-  //   const [k, v] = curr.split(':');
-  //   acc[k] = v
-  //   return acc;
-  // }, {})
-  // console.log('- args', args);
-  // const storyParamsWithExtras = { ...storyParams, ...extraParams };
-  // const storyParamsWithExtras = {  };
   if (storyParams){ 
     const storyParamsWithExtras = { 
       component: component,
       args: storyParams?.args
      };
-    console.log('storyParamsWithExtras', storyParamsWithExtras);
-    const newAppUrl = getFullDeepLinkUrl(
-      deepLinkBaseUrl,
-      storyParamsWithExtras
+     const newAppUrl = getFullDeepLinkUrl(
+       deepLinkBaseUrl,
+       storyParamsWithExtras
     );
-    console.log('--- newAppUrl', newAppUrl);
+    console.log('=====================================');
+    console.log('newAppUrl', newAppUrl);
+    console.log('storyParamsWithExtras', storyParamsWithExtras);
+    console.log('-------------------------------------');
     controller.openDeepLink(newAppUrl);
     return;
   }
+
+  // TODO: update this so we can generate deeplinks without params
   // controller.openDeepLink(deepLinkUrl);
 }

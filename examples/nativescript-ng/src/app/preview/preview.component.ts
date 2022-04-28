@@ -1,17 +1,12 @@
 import { ChangeDetectorRef, Component, ComponentFactoryResolver, ComponentRef, OnInit, ViewChild, ViewContainerRef } from '@angular/core'
 import { UrlHandlerService } from '../services/url-handler.service';
 import { DynamicComponentService } from '../services/dynamic-component.service';
-import { ButtonComponent } from '../components/button/button.component';
-
-export const TEMP_COMPONENT_MAPPING = {
-  'ns-button': ButtonComponent
-}
 
 @Component({
-  selector: 'ns-items',
-  templateUrl: './items.component.html',
+  selector: 'ns-preview',
+  templateUrl: './preview.component.html',
 })
-export class ItemsComponent implements OnInit {
+export class PreviewComponent implements OnInit {
   @ViewChild('target', { read: ViewContainerRef, static: true })
   target: ViewContainerRef;
   message: string = '';
@@ -36,7 +31,6 @@ export class ItemsComponent implements OnInit {
 
       console.log('======================================');
       console.log('url changed', storybook);
-      console.log('--------------------------------------');
       this.message = storybook.params.label
 
       this.target.clear();
@@ -49,7 +43,7 @@ export class ItemsComponent implements OnInit {
             args[key] = val;
             return args;
           }, {})
-          console.log('--- args', args);
+          console.log('args', args);
         }
         this.dynamicComponentService.getComponentBySelector(storybook.params.component, () => import("../components/components.module").then(m => m.ComponentsModule)).then(componentRef => {
           this.addComponentInputs(componentRef, args);
@@ -59,20 +53,7 @@ export class ItemsComponent implements OnInit {
           console.log('error', error);
         });
       }
-
-
-// console.log('--- comp', TEMP_COMPONENT_MAPPING[storybook.params.component]);
-// try {
-
-//   const compFactory = this.cfr.resolveComponentFactory(TEMP_COMPONENT_MAPPING[storybook.params.component]);
-//   const componentRef = this.target.createComponent(compFactory);
-//   const { instance } = componentRef;
-// } catch(error) {
-// console.log('error', error);
-// }
-      // For some reason, manual change detection ref is only working when getting the ref from the injector (rather than componentRef.changeDetectorRef)
-      // const childChangeDetectorRef: ChangeDetectorRef =
-      //   componentRef.injector.get(ChangeDetectorRef);
+      console.log('--------------------------------------');
     })
   }
 
