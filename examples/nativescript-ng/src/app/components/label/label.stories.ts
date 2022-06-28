@@ -6,18 +6,20 @@ import { LabelComponent } from './label.component';
 import { listenToStoryChange } from '../../core/deep-link-generator';
 
 
-// TODO: move this to somehwere that makes sense
+// TODO: move this to somewhere that makes sense
 // it has to be called once to generate deeplinks
 listenToStoryChange();
 
 // More on default export: https://storybook.js.org/docs/angular/writing-stories/introduction#default-export
 export default {
+  id: 'ns-label', // has to match your component's selector
   title: 'Example/Label',
   component: LabelComponent,
   // More on argTypes: https://storybook.js.org/docs/angular/api/argtypes
-  // argTypes: {
-  //   backgroundColor: { control: 'color' },
-  // },
+  argTypes: {
+    text: { control: 'text' },
+    color: { control: 'color' },
+  },
 } as Meta;
 
 
@@ -29,8 +31,7 @@ const Template: Story<LabelComponent> = (args: LabelComponent) => ({
 export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/angular/writing-stories/args
 Primary.args = {
-  // primary: true,
-  text: 'TEST TEXT',
+  text: 'Primary',
   color: 'blue'
 };
 

@@ -40,7 +40,11 @@ export class PreviewComponent implements OnInit {
         if (argsString) {
           args = argsString.split(';').reduce((args, arg) => {
             const [key, val] = arg.split(':');
-            args[key] = val;
+            if (val?.includes('!hex')) {
+              args[key] = `#${val.match(/\(([^)]+)\)/)[1]}`;
+            } else {
+              args[key] = val;
+            }
             return args;
           }, {})
           console.log('args', args);

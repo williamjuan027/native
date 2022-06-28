@@ -1,0 +1,11 @@
+<GridLayout margin="20" height="800px" rows="*" columns="*">
+    <ContentView height="95%" width="95%" [boxShadow]="boxShadow"></ContentView>
+    <GridLayout rows="auto, auto" columns="*" backgroundColor="#fff" [borderRadius]="borderRadius">
+        <Image *ngIf="imageSrc" height="450px" stretch="aspectFill" [src]="imageSrc"></Image>
+    
+        <StackLayout row="1" padding="15">
+            <Label [text]="title" color="#555" fontWeight="bold" fontSize="24"></Label>
+            <Label [text]="content" marginTop="10" color="#777" textWrap="true"></Label>
+        </StackLayout>
+    </GridLayout>
+</GridLayout>
