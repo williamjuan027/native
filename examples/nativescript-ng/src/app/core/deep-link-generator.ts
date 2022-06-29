@@ -1,16 +1,16 @@
-import { BehaviorSubject, combineLatest, debounceTime, startWith } from "rxjs";
+import { BehaviorSubject, combineLatest, debounceTime, distinctUntilChanged } from "rxjs";
 import { addons } from "@storybook/addons";
 import { ControllerManager } from "@storybook/native-controllers";
 
-export function listenToStoryChange(): void {
+export function listenToStoryChange(targetPlatform: 'android' | 'ios'): void {
   addons.ready().then(channel => {
     setTimeout(() => {
       const queryParams$ = new BehaviorSubject<Record<string, any>>({});
       const component$ = new BehaviorSubject<string>('');
 
       combineLatest([
-        component$,
-        queryParams$
+        component$.pipe(distinctUntilChanged()),
+        queryParams$.pipe(distinctUntilChanged())
       ]).pipe(
         debounceTime(200)
       )
@@ -20,7 +20,7 @@ export function listenToStoryChange(): void {
         console.log('queryParams', queryParams);
         console.groupEnd();
         const componentName = component?.split('--')[0] || '';
-        updateDeepLink(componentName, queryParams);
+        updateDeepLink(componentName, queryParams, targetPlatform);
       })
 
       const defaultStoryId = (<any>channel).data?.storyRendered?.[0];
@@ -45,18 +45,16 @@ export function listenToStoryChange(): void {
   })
 }
 
-function updateDeepLink(component: string, storyParams: Record<string,any>): void {
+function updateDeepLink(component: string, storyParams: Record<string,any>, targetPlatform: 'android' | 'ios'): void {
   const manager = new ControllerManager();
-  const platform = 'ios';
-  const context = platform;
-  // const device = useDevice(platform);
+  const context = targetPlatform;
   const controller = manager.getController(context);
   const deepLinkBaseUrl="sb-native://deep.link";
   controller.updateConfig({
     settings: {
-        device: 'ios'
+        device: targetPlatform
     },
-    platform,
+    platform: targetPlatform,
     baseUrl: deepLinkBaseUrl
   });
   if (storyParams?.args){ 

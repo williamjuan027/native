@@ -2,7 +2,12 @@ import {
     platformNativeScript,
     runNativeScriptAngularApp
 } from "@nativescript/angular";
-import { Application, isIOS } from "@nativescript/core";
+import {
+    AndroidApplication,
+    Application,
+    isAndroid,
+    isIOS
+} from "@nativescript/core";
 
 import { AppModule } from "./app/app.module";
 
@@ -63,19 +68,28 @@ if (isIOS) {
             return previousResult;
         }
     );
-
-    // enableMultipleOverridesFor(
-    //     appDelegate,
-    //     'applicationContinueUserActivityRestorationHandler',
-    //     function (
-    //         application: UIApplication,
-    //         userActivity: NSUserActivity
-    //     ): boolean {
-    //         if (userActivity.activityType === NSUserActivityTypeBrowsingWeb) {
-    //         }
-
-    //         return true;
-    // });
+}
+if (isAndroid) {
+    Application.android.on(
+        AndroidApplication.activityNewIntentEvent,
+        (args) => {
+            setTimeout(() => {
+                let intent: android.content.Intent = args.activity.getIntent();
+                try {
+                    const parsedUrl =
+                        UrlHandlerService.getInstance().handleAndroidIntent(
+                            intent
+                        );
+                    UrlHandlerService.getInstance().getCallback()(parsedUrl);
+                } catch (e) {
+                    console.error(
+                        "Unknown error during getting App URL data",
+                        e
+                    );
+                }
+            });
+        }
+    );
 }
 
 runNativeScriptAngularApp({

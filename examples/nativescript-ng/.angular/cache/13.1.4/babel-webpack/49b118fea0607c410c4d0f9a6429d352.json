@@ -4,7 +4,7 @@
     "map": {
         "version": 3,
         "sources": [
-            "/Users/william/Projects/opensource/native/examples/nativescript-ng/node_modules/scheduler/cjs/scheduler-tracing.development.js"
+            "/Users/william/Projects/opensource/native/node_modules/scheduler/cjs/scheduler-tracing.development.js"
         ],
         "names": [
             "process",

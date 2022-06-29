@@ -14,8 +14,11 @@ export class PreviewComponent implements OnInit {
   constructor(
     private cfr: ComponentFactoryResolver,
     private changeDetectorRef: ChangeDetectorRef,
-    private dynamicComponentService: DynamicComponentService
-  ) {}
+    private dynamicComponentService: DynamicComponentService,
+    // private page: Page
+  ) {
+    // this.page.actionBarHidden = true;
+  }
 
   ngOnInit(): void {
     this.listenToUrlChange();
@@ -24,7 +27,7 @@ export class PreviewComponent implements OnInit {
   listenToUrlChange(): void {
     let storybookUrl;
     UrlHandlerService.getInstance().handleOpenURL((storybook) => {
-      if (storybook.url === storybookUrl) {
+      if (storybook?.url === storybookUrl) {
         return;
       }
       storybookUrl = storybook.url;

@@ -26,7 +26,7 @@ const Template: Story<CardComponent> = (args: CardComponent) => ({
 export const Primary = Template.bind({});
 Primary.args = {
   title: 'Bali',
-  content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+  content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
   borderRadius: 10,
   boxShadow: '2 2 10 10 rgba(0,0,0,0.5)'
 };
@@ -34,7 +34,7 @@ Primary.args = {
 export const Secondary = Template.bind({});
 Secondary.args = {
   title: 'Chicago',
-  content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+  content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
   borderRadius: 0,
   boxShadow: '2 2 10 10 pink'
 };

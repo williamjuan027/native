@@ -8,7 +8,7 @@ import { listenToStoryChange } from '../../core/deep-link-generator';
 
 // TODO: move this to somewhere that makes sense
 // it has to be called once to generate deeplinks
-listenToStoryChange();
+listenToStoryChange(process.env.STORYBOOK_TARGET_PLATFORM as any);
 
 // More on default export: https://storybook.js.org/docs/angular/writing-stories/introduction#default-export
 export default {

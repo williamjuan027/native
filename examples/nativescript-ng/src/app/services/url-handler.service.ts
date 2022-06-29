@@ -1,10 +1,18 @@
+import { AndroidApplication, Application } from "@nativescript/core";
+
 export interface StorybookUrl {
     url: string,
     params?: Record<string, any>
 }
 export class UrlHandlerService {
      
+    // used by iOS
     parseUrl(url: string): StorybookUrl {
+        if (!url) {
+            return {
+                url: ''
+            }
+        }
         // example url: sb-native://deep.link?component=button&label=helo
         const urlWithParams = url.indexOf('?') !== -1
         if (urlWithParams) {
@@ -21,6 +29,28 @@ export class UrlHandlerService {
         }
         return {
             url: url
+        }
+    }
+
+    // used by Android
+    handleAndroidIntent(intent: android.content.Intent): StorybookUrl {
+        let data = intent.getData();
+        try {
+            const appUrl = this.parseUrl(data?.toString());
+            if (appUrl != null &&
+                (new String(intent.getAction()).valueOf() === new String(android.content.Intent.ACTION_MAIN).valueOf()
+                    || new String(intent.getAction()).valueOf() === new String(android.content.Intent.ACTION_VIEW).valueOf())) {
+                try {
+                      // clear intent so that url will not be re-handled upon subsequent ActivityStarted event
+                      intent.setAction('');
+                      intent.setData(null);
+                      return appUrl;
+                } catch (error) {
+                    console.log('error', error);
+                }
+            }
+        } catch (e) {
+            console.error('Unknown error during getting App URL data', e);
         }
     }
 

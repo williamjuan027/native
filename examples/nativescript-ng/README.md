@@ -8,12 +8,32 @@ Install dependencies
 npm i
 ```
 
+### Run Android
+
 Open 2 terminals and run the following command on each terminal
 
 ```bash
-// terminal 1 - launches storybook
-npm run start
+// terminal 1 - runs the app on the android simulator
+ns run android
 
-// terminal 2 - runs the app on the simulator
+// terminal 2 - launches storybook
+npm run start:android
+```
+
+### Run iOS
+
+Launch the iOS simulator
+
+```bash
+open -a Simulator
+```
+
+Open 2 terminals and run the following command on each terminal
+
+```bash
+// terminal 1 - runs the app on the ios simulator
 ns run ios
+
+// terminal 2 - launches storybook
+npm run start:ios
 ```
