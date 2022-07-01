@@ -11,8 +11,11 @@ export default {
   component: CardComponent,
   argTypes: {
     title: { control: 'text' },
+    titleColor: { control: 'color' },
     content: { control: 'text' },
+    contentColor: { control: 'color' },
     borderRadius: { control: { type: 'range', min: 0, max: 30, step: 1 } },
+    imageBorderRadius: { control: { type: 'range', min: 0, max: 30, step: 1 } },
     boxShadow: { control: 'text' },
   },
 } as Meta;
@@ -25,16 +28,22 @@ const Template: Story<CardComponent> = (args: CardComponent) => ({
 
 export const Primary = Template.bind({});
 Primary.args = {
-  title: 'Bali',
-  content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+  title: 'NativeScript x Storybook',
+  titleColor: '#555',
+  content: 'Is this cool or what?',
+  contentColor: '#777',
   borderRadius: 10,
-  boxShadow: '2 2 10 10 rgba(0,0,0,0.5)'
+  imageBorderRadius: 10,
+  boxShadow: '2 2 5 5 rgba(0,0,0,0.5)'
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
-  title: 'Chicago',
-  content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+  title: 'Storybook on Simulators',
+  titleColor: '#75ACEB',
+  content: 'This is pretty cool right?',
+  contentColor: '#777',
   borderRadius: 0,
-  boxShadow: '2 2 10 10 pink'
+  imageBorderRadius: 0,
+  boxShadow: '0 0 5 0 #75ACEB'
 };

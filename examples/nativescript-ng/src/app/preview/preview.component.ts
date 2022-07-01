@@ -9,16 +9,13 @@ import { DynamicComponentService } from '../services/dynamic-component.service';
 export class PreviewComponent implements OnInit {
   @ViewChild('target', { read: ViewContainerRef, static: true })
   target: ViewContainerRef;
-  message: string = '';
+  componentName: string = '';
 
   constructor(
     private cfr: ComponentFactoryResolver,
     private changeDetectorRef: ChangeDetectorRef,
     private dynamicComponentService: DynamicComponentService,
-    // private page: Page
-  ) {
-    // this.page.actionBarHidden = true;
-  }
+  ) { }
 
   ngOnInit(): void {
     this.listenToUrlChange();
@@ -34,10 +31,10 @@ export class PreviewComponent implements OnInit {
 
       console.log('======================================');
       console.log('url changed', storybook);
-      this.message = storybook.params.label
 
       this.target.clear();
       if (!!storybook.params?.component) {
+        this.componentName = storybook.params.component;
         const argsString = decodeURIComponent(storybook.params.args)
         let args = {}
         if (argsString) {
@@ -59,6 +56,8 @@ export class PreviewComponent implements OnInit {
         }).catch(error => {
           console.log('error', error);
         });
+      } else {
+        this.componentName = '';
       }
       console.log('--------------------------------------');
     })

@@ -13,6 +13,7 @@ export default {
     text: { control: 'text' },
     color: { control: 'color' },
     backgroundColor: { control: 'color' },
+    borderColor: { control: 'color' },
   },
 } as Meta;
 
@@ -26,13 +27,15 @@ export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/angular/writing-stories/args
 Primary.args = {
   text: 'Primary',
-  color: 'white',
-  backgroundColor: 'blue'
+  color: '#FFF',
+  backgroundColor: '#75ACEB',
+  borderColor: 'transparent'
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
   text: 'Secondary',
-  color: 'pink',
-  backgroundColor: 'red'
+  color: '#75ACEB',
+  backgroundColor: '#FFF',
+  borderColor: '#75ACEB'
 };

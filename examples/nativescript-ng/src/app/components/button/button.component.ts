@@ -6,8 +6,9 @@ import { Component, Input } from '@angular/core'
 })
 export class ButtonComponent {
     @Input() text: string | undefined = 'BUTTON';
-    @Input() color: string | undefined  = 'yellow';
-    @Input() backgroundColor: string | undefined  = 'red';
+    @Input() color: string | undefined  = '#FFF';
+    @Input() backgroundColor: string | undefined  = '#75ACEB';
+    @Input() borderColor: string | undefined = '#75ACEB';
 
     ngOnChanges(): void {}
 }

@@ -1,10 +1,10 @@
 <GridLayout margin="20" height="800px" rows="*" columns="*" [borderRadius]="borderRadius" [boxShadow]="boxShadow">
     <GridLayout rows="auto, auto" columns="*" backgroundColor="#fff" [borderRadius]="borderRadius" padding="10">
-        <Image *ngIf="imageSrc" height="450px" stretch="aspectFill" [borderRadius]="borderRadius" [src]="imageSrc"></Image>
+        <Image *ngIf="imageSrc" height="450px" stretch="aspectFill" [borderRadius]="imageBorderRadius" [src]="imageSrc"></Image>
     
         <StackLayout row="1" padding="15">
-            <Label [text]="title" color="#555" fontWeight="bold" fontSize="24"></Label>
-            <Label [text]="content" marginTop="10" color="#777" textWrap="true"></Label>
+            <Label [text]="title" [color]="titleColor" fontWeight="bold" fontSize="24"></Label>
+            <Label [text]="content" marginTop="10" [color]="contentColor" textWrap="true"></Label>
         </StackLayout>
     </GridLayout>
 </GridLayout>
