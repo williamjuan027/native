@@ -19,6 +19,9 @@ yarn-error.log*
 .project
 tmp/
 typings/
+.angular
+package-lock.json
+yarn.lock
 
 # Visual Studio Code
 .vscode/*

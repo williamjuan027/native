@@ -8,33 +8,31 @@
     "start": "STORYBOOK_NATIVE_LOCAL_EMULATOR=true yarn start-storybook -p 53743",
     "start:android": "STORYBOOK_NATIVE_LOCAL_EMULATOR=true STORYBOOK_TARGET_PLATFORM=android yarn start-storybook -p 53743",
     "start:ios": "STORYBOOK_NATIVE_LOCAL_EMULATOR=true STORYBOOK_TARGET_PLATFORM=ios yarn start-storybook -p 53743",
-    "build:storybook": "yarn build-storybook",
-    "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points"
+    "build:storybook": "yarn build-storybook"
   },
   "dependencies": {
-    "@angular/animations": "~13.1.1",
-    "@angular/common": "~13.1.1",
-    "@angular/compiler": "~13.1.1",
-    "@angular/core": "~13.1.1",
-    "@angular/forms": "~13.1.1",
-    "@angular/platform-browser": "~13.1.1",
-    "@angular/platform-browser-dynamic": "~13.1.1",
-    "@angular/router": "~13.1.1",
-    "@nativescript/angular": "^13.0.0",
+    "@angular/animations": "~14.0.0",
+    "@angular/common": "~14.0.0",
+    "@angular/compiler": "~14.0.0",
+    "@angular/core": "~14.0.0",
+    "@angular/forms": "~14.0.0",
+    "@angular/platform-browser": "~14.0.0",
+    "@angular/platform-browser-dynamic": "~14.0.0",
+    "@angular/router": "~14.0.0",
+    "@nativescript/angular": "^14.0.0",
     "@nativescript/core": "~8.2.2",
-    "rxjs": "~7.4.0",
-    "zone.js": "~0.11.4"
+    "rxjs": "^7.5.0",
+    "zone.js": "~0.11.5"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~13.1.1",
-    "@angular/cli": "^13.2.5",
-    "@angular/compiler-cli": "~13.1.1",
-    "@nativescript/android": "8.2.4",
-    "@nativescript/ios": "8.2.2",
-    "@nativescript/types-android": "8.2.0",
-    "@nativescript/types-ios": "8.2.1",
+    "@angular-devkit/build-angular": "~14.0.0",
+    "@angular/cli": "~14.0.0",
+    "@angular/compiler-cli": "~14.0.0",
+    "@nativescript/android": "~8.2.4",
+    "@nativescript/ios": "~8.2.2",
+    "@nativescript/types": "~8.2.0",
     "@nativescript/webpack": "~5.0.0",
-    "@ngtools/webpack": "~13.1.1",
+    "@ngtools/webpack": "~14.0.0",
     "@storybook/addon-controls": "^6.4.19",
     "@storybook/angular": "^6.4.19",
     "@storybook/builder-webpack5": "^6.4.19",
@@ -43,6 +41,6 @@
     "@storybook/native-addon": "^2.2.2",
     "@storybook/native-components": "^2.2.2",
     "@storybook/native-dev-middleware": "^2.2.2",
-    "typescript": "~4.4.4"
+    "typescript": "~4.7.3"
   }
 }
